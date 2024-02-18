@@ -11,7 +11,7 @@ const search: SearchSignature = async(name: string): Promise<SearchResponse> => 
 
   for(let page = 2; page < totalResultsPages; page++) {
     promises.push((async () => 
-      (await fetchResultsPage(query, page)).forEach(([ title, url ]) => assignResult(results, title, url))
+      (await fetchResultsPage(query, page)).forEach(([ title, url ]) => appendResult(results, title, url))
     )())
   }
 
@@ -44,7 +44,7 @@ async function fetchResultsPage(query: string, param: Document | number): Promis
     const nodeList = param.querySelectorAll<HTMLAnchorElement>(SEARCH_RESULTS_SELECTOR)
     const results: SearchResponse = {}
   
-    nodeList.forEach(({ innerHTML, href }) => assignResult(results, innerHTML.trim(), href))
+    nodeList.forEach(({ innerHTML, href }) => appendResult(results, innerHTML.trim(), href))
   
     return results
   }
@@ -59,13 +59,11 @@ async function fetchResultsPage(query: string, param: Document | number): Promis
   return results
 }
 
-function assignResult(results: SearchResponse, title: string, url: string) {
+function appendResult(results: SearchResponse, title: string, url: string) {
   if(!results[title]) {
-    results[title] = url
+    results[title] = [url]
     return
   }
 
-  if(Array.isArray(results[title])) (results[title] as Array<string>).push(url)
-
-  results[title] = [ results[title] as string, url ]
+  results[title].push(url)
 }

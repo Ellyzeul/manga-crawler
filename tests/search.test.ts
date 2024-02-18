@@ -6,16 +6,12 @@ describe('search module', () => {
   test('searchs on mangakakalot', () => {
     search('naruto', 'mangakakalot')
       .then(results => {
-        Object.keys(results).map(title => ([title, results[title]]))
-          .forEach(([title, url]) => {
+        Object.keys(results).map(title => [title, results[title]] as [string, Array<string>])
+          .forEach(([title, urlList]) => {
             expect(typeof title).toEqual('string')
+            expect(urlList).toBeInstanceOf(Array)
 
-            if(Array.isArray(url)) {
-              url.forEach(link => expect(link).toMatch(URL_REGEX))
-              return
-            }
-
-            expect(url).toMatch(URL_REGEX)
+            urlList.forEach(link => expect(link).toMatch(URL_REGEX))
           })
       })
   })
