@@ -1,0 +1,24 @@
+{
+  "name": "manga-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsc && node dist/index.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jsdom": "^21.1.6",
+    "@types/node": "^20.11.19",
+    "axios": "^1.6.7",
+    "jsdom": "^24.0.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "ts-jest": "^29.1.2"
+  }
+}
