@@ -1,17 +1,7 @@
-import mangakakalotSearch from "./src/mangakakalot/search";
-import { SearchSignature } from "./types/Search";
+import search from "./lib/search";
 
-export async function search(name: string, source: Source) {
-  if(!mapSearch[source]) throw 'Feature unimplemented...'
-
-  return await mapSearch[source](name)
+const MangaCrawler = {
+  search
 }
 
-const mapSearch: MapSources<SearchSignature> = {
-  'mangakakalot': mangakakalotSearch,
-}
-
-type Source = 
-    'mangakakalot'
-
-type MapSources<Signature> = Record<string, Signature>
+export default MangaCrawler

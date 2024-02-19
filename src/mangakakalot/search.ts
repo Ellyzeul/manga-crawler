@@ -1,6 +1,6 @@
-import { SearchResponse, SearchSignature } from "../../types/Search";
+import { MangaBasicInfo, SearchResponse, SearchSignature } from "../../types/Search";
 import { fetchDocument } from "../utils";
-import { SEARCH_LAST_PAGE_SELECTOR, SEARCH_PAGINATOR_SELECTOR, SEARCH_RESULTS_SELECTOR } from "./constants";
+import { SEARCH_ITEM_ANCHOR_SELECTOR, SEARCH_ITEM_IMG_SELECTOR, SEARCH_ITEM_SELECTOR, SEARCH_LAST_PAGE_SELECTOR, SEARCH_PAGINATOR_SELECTOR } from "./constants";
 
 const search: SearchSignature = async(name: string): Promise<SearchResponse> => {
   const query = name.toLocaleLowerCase().replaceAll(/([\s\-])/g, '_')
@@ -11,7 +11,7 @@ const search: SearchSignature = async(name: string): Promise<SearchResponse> => 
 
   for(let page = 2; page < totalResultsPages; page++) {
     promises.push((async () => 
-      (await fetchResultsPage(query, page)).forEach(([ title, url ]) => appendResult(results, title, url))
+      (await fetchResultsPage(query, page)).forEach(forRecord => appendResult(results, forRecord))
     )())
   }
 
@@ -38,32 +38,39 @@ async function getTotalResultsPages(document: Document): Promise<number> {
 }
 
 async function fetchResultsPage(query: string, document: Document): Promise<SearchResponse>;
-async function fetchResultsPage(query: string, page: number): Promise<Array<[string, string]>>;
-async function fetchResultsPage(query: string, param: Document | number): Promise<SearchResponse | Array<[string, string]>> {
+async function fetchResultsPage(query: string, page: number): Promise<Array<[string, MangaBasicInfo]>>;
+async function fetchResultsPage(query: string, param: Document | number): Promise<SearchResponse | Array<[string, MangaBasicInfo]>> {
   if(!(typeof param === 'number')) {
-    const nodeList = param.querySelectorAll<HTMLAnchorElement>(SEARCH_RESULTS_SELECTOR)
+    const nodeList = param.querySelectorAll<HTMLDivElement>(SEARCH_ITEM_SELECTOR)
     const results: SearchResponse = {}
   
-    nodeList.forEach(({ innerHTML, href }) => appendResult(results, innerHTML.trim(), href))
+    nodeList.forEach(mangaCard => appendResult(results, getMangaBasicInfo(mangaCard)))
   
     return results
   }
-  const results: Array<[string, string]> = []
+  const results: Array<[string, MangaBasicInfo]> = []
   const document = await fetchDocument(getUrl(query, param))
 
-  document.querySelectorAll<HTMLAnchorElement>(SEARCH_RESULTS_SELECTOR).forEach(({ innerHTML, href }) => results.push([
-    innerHTML.trim(),
-    href,
-  ]))
+  document.querySelectorAll<HTMLDivElement>(SEARCH_ITEM_SELECTOR)
+    .forEach(mangaCard => results.push(getMangaBasicInfo(mangaCard)))
 
   return results
 }
 
-function appendResult(results: SearchResponse, title: string, url: string) {
+function getMangaBasicInfo(mangaCard: HTMLDivElement): [string, MangaBasicInfo] {
+  const { innerHTML: title, href: link } = mangaCard.querySelector<HTMLAnchorElement>(SEARCH_ITEM_ANCHOR_SELECTOR) as HTMLAnchorElement
+  const { src: thumbnail } = mangaCard.querySelector<HTMLImageElement>(SEARCH_ITEM_IMG_SELECTOR) as HTMLImageElement
+
+  return [title.trim(), { link, thumbnail }]
+}
+
+function appendResult(results: SearchResponse, forRecord: [string, MangaBasicInfo]) {
+  const [title, info] = forRecord
+
   if(!results[title]) {
-    results[title] = [url]
+    results[title] = [info]
     return
   }
 
-  results[title].push(url)
+  results[title].push(info)
 }
