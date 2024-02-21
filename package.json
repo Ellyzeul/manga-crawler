@@ -8,7 +8,8 @@
     "url": "https://github.com/Ellyzeul/manga-crawler.git"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "example": "npx tsc && node dist/examples/index.js"
   },
   "keywords": ["manga"],
   "author": "",
