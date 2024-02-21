@@ -1,8 +1,16 @@
 # Manga Crawler
 
-Uma biblioteca para acesso de mangás em fontes diversas.
+A lib for programmatic access to manga on diverse sources.
 
-## Uso da biblioteca
+[Português](https://github.com/Ellyzeul/manga-crawler/blob/main/README-pt_BR.md)
+
+## Installation
+
+```shell
+npm i manga-crawler
+```
+
+## Usage
 
 ### `search`
 
@@ -11,12 +19,12 @@ import MangaCrawler from "manga-crawler"
 
 const results = await MangaCrawler.search('naruto', 'mangakakalot')
 ```
-Tipo retornado: 
+Returned type: 
 ```typescript
 Array<{
-  name: string,       // Título do mangá
-  link: string,       // Link para a página do mangá
-  thumbnail: string,  // Link para a imagem da capa
+  name: string,       // Manga title
+  link: string,       // Manga page link
+  thumbnail: string,  // Cover link
 }>
 ```
 ---
@@ -27,21 +35,21 @@ import MangaCrawler from "manga-crawler"
 
 const results = await MangaCrawler.fetchChaptersList('https://chapmanganato.to/manga-ng952689', 'manganato')
 ```
-Tipo retornado: 
+Returned type: 
 ```typescript
 {
-  summary: string,                    // Descrição do mangá
-  alternative_titles: Array<string>,  // Lista de títulos alternativos
-  author?: string,                    // Autor da obra
-  status?: string,                    // Situação atual do mangá
-  genres: Array<string>,              // Lista de gêneros
-  updated_at?: string,                // Data da última atualização
-  views?: number,                     // Total de visualizações
+  summary: string,                    // Manga description
+  alternative_titles: Array<string>,  // Alternative titles list
+  author?: string,                    // Author of the manga
+  status?: string,                    // Current manga status
+  genres: Array<string>,              // Genres list of the manga
+  updated_at?: string,                // Latest update date
+  views?: number,                     // Total views
   chapters: Array<{
-    name: string          // Nome do capítulo
-    link: string,         // Link para o capítulo
-    created_at: string,   // Data da postagem
-    views: number,        // Número de leituras
+    name: string          // Chapter name
+    link: string,         // Chapter link
+    created_at: string,   // Post date of the chapter
+    views: number,        // Total views
   }>
 }
 ```

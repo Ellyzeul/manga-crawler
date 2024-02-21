@@ -1,14 +1,18 @@
 {
   "name": "manga-crawler",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.3",
+  "description": "A lib for programmatic access to manga on diverse sources.",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ellyzeul/manga-crawler.git"
+  },
   "scripts": {
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": ["manga"],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@types/jsdom": "^21.1.6",
     "@types/node": "^20.11.19",
