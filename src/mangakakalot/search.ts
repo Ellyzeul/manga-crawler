@@ -10,9 +10,9 @@ const search: SearchSignature = async(name: string): Promise<SearchResponse> => 
   const promises: Array<Promise<void>> = []
 
   for(let page = 2; page < totalResultsPages; page++) {
-    promises.push((async () => 
-      (await fetchResultsPage(query, page)).forEach(forRecord => appendResult(results, forRecord))
-    )())
+    promises.push((async() => {
+      results.push(...(await fetchResultsPage(query, page)))
+    })())
   }
 
   if(promises.length > 0) await Promise.all(promises)
@@ -38,17 +38,17 @@ async function getTotalResultsPages(document: Document): Promise<number> {
 }
 
 async function fetchResultsPage(query: string, document: Document): Promise<SearchResponse>;
-async function fetchResultsPage(query: string, page: number): Promise<Array<[string, MangaBasicInfo]>>;
-async function fetchResultsPage(query: string, param: Document | number): Promise<SearchResponse | Array<[string, MangaBasicInfo]>> {
+async function fetchResultsPage(query: string, page: number): Promise<SearchResponse>;
+async function fetchResultsPage(query: string, param: Document | number): Promise<SearchResponse> {
   if(!(typeof param === 'number')) {
     const nodeList = param.querySelectorAll<HTMLDivElement>(SEARCH_ITEM_SELECTOR)
-    const results: SearchResponse = {}
+    const results: SearchResponse = []
   
-    nodeList.forEach(mangaCard => appendResult(results, getMangaBasicInfo(mangaCard)))
+    nodeList.forEach(mangaCard => results.push(getMangaBasicInfo(mangaCard)))
   
     return results
   }
-  const results: Array<[string, MangaBasicInfo]> = []
+  const results: SearchResponse = []
   const document = await fetchDocument(getUrl(query, param))
 
   document.querySelectorAll<HTMLDivElement>(SEARCH_ITEM_SELECTOR)
@@ -57,20 +57,13 @@ async function fetchResultsPage(query: string, param: Document | number): Promis
   return results
 }
 
-function getMangaBasicInfo(mangaCard: HTMLDivElement): [string, MangaBasicInfo] {
+function getMangaBasicInfo(mangaCard: HTMLDivElement): MangaBasicInfo {
   const { innerHTML: title, href: link } = mangaCard.querySelector<HTMLAnchorElement>(SEARCH_ITEM_ANCHOR_SELECTOR) as HTMLAnchorElement
   const { src: thumbnail } = mangaCard.querySelector<HTMLImageElement>(SEARCH_ITEM_IMG_SELECTOR) as HTMLImageElement
 
-  return [title.trim(), { link, thumbnail }]
-}
-
-function appendResult(results: SearchResponse, forRecord: [string, MangaBasicInfo]) {
-  const [title, info] = forRecord
-
-  if(!results[title]) {
-    results[title] = [info]
-    return
+  return {
+    name: title.trim(),
+    link,
+    thumbnail
   }
-
-  results[title].push(info)
 }

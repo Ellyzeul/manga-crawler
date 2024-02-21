@@ -1,6 +1,7 @@
 export type SearchSignature = (name: string) => Promise<SearchResponse>
-export type SearchResponse = Record<string, Array<MangaBasicInfo>>
+export type SearchResponse = Array<MangaBasicInfo>
 export type MangaBasicInfo = {
+  name: string
   link: string,
   thumbnail: string,
 }
