@@ -30,7 +30,13 @@ const results = await MangaCrawler.fetchChaptersList('https://chapmanganato.to/m
 Tipo retornado: 
 ```typescript
 {
-  summary: string,      // Descrição do mangá
+  summary: string,                    // Descrição do mangá
+  alternative_titles: Array<string>,  // Lista de títulos alternativos
+  author?: string,                    // Autor da obra
+  status?: string,                    // Situação atual do mangá
+  genres: Array<string>,              // Lista de gêneros
+  updated_at?: string,                // Data da última atualização
+  views?: number,                     // Total de visualizações
   chapters: Array<{
     name: string          // Nome do capítulo
     link: string,         // Link para o capítulo
