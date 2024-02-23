@@ -8,6 +8,11 @@ Uma biblioteca para acesso de mangás em fontes diversas.
 
 ### `search`
 
+`search(name: string, source: string)`
+
+- `name`: Nome do mangá a ser pesquisado
+- `source`: Nome da fonte de pesquisa suportada
+
 ```javascript
 import MangaCrawler from "manga-crawler"
 
@@ -23,6 +28,11 @@ Array<{
 ```
 ---
 ### `fetchChaptersList`
+
+`fetchChaptersList(mangaLink: string, source: string)`
+
+- `mangaLink`: Link para a página do mangá
+- `source`: Nome da fonte suportada
 
 ```javascript
 import MangaCrawler from "manga-crawler"
@@ -49,6 +59,11 @@ Tipo retornado:
 ```
 ---
 ### `fetchChapterPages`
+
+`fetchChapterPages(chapterLink: string, source: string)`
+
+- `chapterLink`: Link para a página do capítulo
+- `source`: Nome da fonte suportada
 
 ```javascript
 import MangaCrawler from "manga-crawler"

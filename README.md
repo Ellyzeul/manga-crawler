@@ -14,6 +14,11 @@ npm i manga-crawler
 
 ### `search`
 
+`search(name: string, source: string)`
+
+- `name`: Name of the manga to search
+- `source`: Name of the supported search source
+
 ```javascript
 import MangaCrawler from "manga-crawler"
 
@@ -29,6 +34,11 @@ Array<{
 ```
 ---
 ### `fetchChaptersList`
+
+`fetchChaptersList(mangaLink: string, source: string)`
+
+- `mangaLink`: Link for the manga webpage
+- `source`: Name of the supported source
 
 ```javascript
 import MangaCrawler from "manga-crawler"
@@ -55,6 +65,11 @@ Returned type:
 ```
 ---
 ### `fetchChapterPages`
+
+`fetchChapterPages(chapterLink: string, source: string)`
+
+- `chapterLink`: Link for the chapter webpage
+- `source`: Name of the supported source
 
 ```javascript
 import MangaCrawler from "manga-crawler"
