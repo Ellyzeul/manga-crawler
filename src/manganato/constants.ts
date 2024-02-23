@@ -14,3 +14,5 @@ export const NUMBER_UNIT: Record<string, number> = {
   'K': 1000,
   'M': 1000000
 }
+
+export const CHAPTER_PAGES_LIST = 'div.container-chapter-reader > img'

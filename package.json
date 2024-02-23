@@ -1,6 +1,6 @@
 {
   "name": "manga-crawler",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "A lib for programmatic access to manga on diverse sources.",
   "main": "index.js",
   "repository": {
@@ -11,7 +11,7 @@
     "test": "jest",
     "example": "npx tsc && node dist/examples/index.js"
   },
-  "keywords": ["manga"],
+  "keywords": [ "manga", "crawler", "api" ],
   "author": "",
   "license": "MIT",
   "dependencies": {
