@@ -10,6 +10,14 @@ A lib for programmatic access to manga on diverse sources.
 npm i manga-crawler
 ```
 
+# Features
+
+Feature | Mangakakalot | Manganato
+-|-|-
+[`search`](#search) | ✅ | ❌
+[`fetchChaptersList`](#fetchchapterslist) | ✅ | ✅
+[`fetchChapterPages`](#fetchchapterpages) | ✅ | ✅
+
 ## Usage
 
 ### `search`
@@ -80,6 +88,6 @@ Returned type:
 ```typescript
 Array<{
   encoded_page?: string,   // Page image like the following: `data:image/jpeg;base64, ${encodedPage}`
-  number: number,         // Number of the page
+  number: number,          // Number of the page
 }>
 ```

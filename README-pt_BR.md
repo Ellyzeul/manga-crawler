@@ -4,6 +4,20 @@ Uma biblioteca para acesso de mangás em fontes diversas.
 
 [English](https://github.com/Ellyzeul/manga-crawler/blob/main/README.md)
 
+## Instalação
+
+```shell
+npm i manga-crawler
+```
+
+# Funcionalidades implementadas
+
+Funcionalidade | Mangakakalot | Manganato
+-|-|-
+[`search`](#search) | ✅ | ❌
+[`fetchChaptersList`](#fetchchapterslist) | ✅ | ✅
+[`fetchChapterPages`](#fetchchapterpages) | ✅ | ✅
+
 ## Uso da biblioteca
 
 ### `search`
@@ -74,6 +88,6 @@ Tipo retornado:
 ```typescript
 Array<{
   encoded_page?: string,   // Imagem da página no formato: `data:image/jpeg;base64, ${encodedPage}`
-  number: number,         // Número da página
+  number: number,          // Número da página
 }>
 ```
