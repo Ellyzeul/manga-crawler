@@ -48,3 +48,17 @@ Tipo retornado:
 }
 ```
 ---
+### `fetchChapterPages`
+
+```javascript
+import MangaCrawler from "manga-crawler"
+
+const results = await MangaCrawler.fetchChapterPages('https://chapmanganato.to/manga-uo998171/chapter-1', 'manganato')
+```
+Tipo retornado: 
+```typescript
+Array<{
+  encoded_page?: string,   // Imagem da página no formato: `data:image/jpeg;base64, ${encodedPage}`
+  number: number,         // Número da página
+}>
+```
