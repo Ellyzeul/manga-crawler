@@ -10,5 +10,6 @@ export default async function fetchManga(mangaLink: string, source: Source) {
 }
 
 const mapSources: MapSources<FetchChaptersSignature> = {
-  'manganato': manganatoFetchManga
+  'mangakakalot': manganatoFetchManga,
+  'manganato': manganatoFetchManga,
 }
