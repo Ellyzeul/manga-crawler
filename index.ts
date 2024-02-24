@@ -1,10 +1,10 @@
 import search from "./lib/search";
-import fetchChaptersList from "./lib/fetchChaptersList";
+import fetchManga from "./lib/fetchManga";
 import fetchChapterPages from "./lib/fetchChapterPages";
 
 const MangaCrawler = {
   search,
-  fetchChaptersList,
+  fetchManga,
   fetchChapterPages
 }
 

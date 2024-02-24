@@ -15,7 +15,7 @@ npm i manga-crawler
 Funcionalidade | Mangakakalot | Manganato
 -|-|-
 [`search`](#search) | ✅ | ❌
-[`fetchChaptersList`](#fetchchapterslist) | ✅ | ✅
+[`fetchManga`](#fetchManga) | ✅ | ✅
 [`fetchChapterPages`](#fetchchapterpages) | ✅ | ✅
 
 ## Uso da biblioteca
@@ -41,9 +41,9 @@ Array<{
 }>
 ```
 ---
-### `fetchChaptersList`
+### `fetchManga`
 
-`fetchChaptersList(mangaLink: string, source: string)`
+`fetchManga(mangaLink: string, source: string)`
 
 - `mangaLink`: Link para a página do mangá
 - `source`: Nome da fonte suportada
@@ -51,7 +51,7 @@ Array<{
 ```javascript
 import MangaCrawler from "manga-crawler"
 
-const results = await MangaCrawler.fetchChaptersList('https://chapmanganato.to/manga-ng952689', 'manganato')
+const results = await MangaCrawler.fetchManga('https://chapmanganato.to/manga-ng952689', 'manganato')
 ```
 Tipo retornado: 
 ```typescript
