@@ -15,7 +15,7 @@ npm i manga-crawler
 Feature | Mangakakalot | Manganato
 -|-|-
 [`search`](#search) | ✅ | ❌
-[`fetchManga`](#fetchManga) | ✅ | ✅
+[`fetchManga`](#fetchManga) | ❌ | ✅
 [`fetchChapterPages`](#fetchchapterpages) | ✅ | ✅
 
 ## Usage
