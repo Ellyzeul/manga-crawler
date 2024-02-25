@@ -1,5 +1,5 @@
 import { MangaBasicInfo, SearchResponse, SearchSignature } from "../../types/Search";
-import { fetchDocument } from "../utils";
+import { fetchDocument, mapLinkToSource } from "../utils";
 import { SEARCH_ITEM_ANCHOR_SELECTOR, SEARCH_ITEM_IMG_SELECTOR, SEARCH_ITEM_SELECTOR, SEARCH_LAST_PAGE_SELECTOR, SEARCH_PAGINATOR_SELECTOR } from "./constants";
 
 const search: SearchSignature = async(name: string): Promise<SearchResponse> => {
@@ -64,6 +64,7 @@ function getMangaBasicInfo(mangaCard: HTMLDivElement): MangaBasicInfo {
   return {
     name: title.trim(),
     link,
-    thumbnail
+    thumbnail,
+    source: mapLinkToSource(link),
   }
 }

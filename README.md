@@ -38,6 +38,7 @@ Array<{
   name: string,       // Manga title
   link: string,       // Manga page link
   thumbnail: string,  // Cover link
+  source: string,     // Manga source, since it may not be the same as the search source
 }>
 ```
 ---

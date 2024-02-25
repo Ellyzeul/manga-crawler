@@ -1,5 +1,3 @@
-import { Source } from "./Source"
-
 export type FetchMangaSignature = (mangaLink: string) => Promise<FetchMangaResponse>
 export type FetchMangaResponse = {
   title: string,
@@ -10,7 +8,6 @@ export type FetchMangaResponse = {
   genres: Array<string>,
   updated_at?: string,
   views?: number,
-  source: Source
   chapters: Array<ChapterInfo>
 }
 export type ChapterInfo = {

@@ -38,6 +38,7 @@ Array<{
   name: string,       // Título do mangá
   link: string,       // Link para a página do mangá
   thumbnail: string,  // Link para a imagem da capa
+  source: string,     // Fonte a qual o mangá pertence, pois nem sempre é a mesma da fonte de pesquisa
 }>
 ```
 ---

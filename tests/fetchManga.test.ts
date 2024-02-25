@@ -13,7 +13,6 @@ describe('fetchManga module', () => {
       genres,
       updated_at,
       views,
-      source,
       chapters
     } = await fetchManga('https://chapmanganato.to/manga-gx983580', 'manganato')
 
@@ -29,7 +28,6 @@ describe('fetchManga module', () => {
 
     updated_at ? expect(typeof updated_at).toEqual('string') : expect(typeof updated_at).toEqual('undefined')
     views ? expect(typeof views).toEqual('number') : expect(typeof views).toEqual('undefined')
-    expect(typeof source).toEqual('string')
 
     chapters.forEach(({ name, link, created_at, views }) => {
       expect(typeof name).toEqual('string')

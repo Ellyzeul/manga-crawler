@@ -6,11 +6,11 @@ describe('search module', () => {
   test('searchs on mangakakalot', async() => {
     const results = await search('naruto', 'mangakakalot')
 
-    results.forEach(({ name, link, thumbnail }) => {
+    results.forEach(({ name, link, thumbnail, source }) => {
       expect(typeof name).toEqual('string')
-
       expect(link).toMatch(URL_REGEX)
       expect(thumbnail).toMatch(URL_REGEX)
+      expect(typeof source).toEqual('string')
     })
   })
 })

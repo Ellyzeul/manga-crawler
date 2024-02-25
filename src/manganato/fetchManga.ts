@@ -1,5 +1,4 @@
-import { ChapterInfo, FetchMangaResponse } from "../../types/FetchChapters"
-import { Source } from "../../types/Source"
+import { ChapterInfo, FetchMangaResponse } from "../../types/FetchManga"
 import { fetchDocument } from "../utils"
 import { CHAPTER_LIST_SELECTOR, CHAPTER_SUMMARY_SELECTOR, MANGA_ALTERNATIVE_TITLES_SELECTOR, MANGA_AUTHOR_SELECTOR, MANGA_DETAILS_TABLE_SELECTOR, MANGA_EXTRA_DETAILS_DIV_SELECTOR, MANGA_GENRES_SELECTOR, MANGA_STATUS_SELECTOR, MANGA_TITLE_SELECTOR, MANGA_UPDATED_AT_SELECTOR, MANGA_VIEWS_SELECTOR, NUMBER_UNIT } from "./constants"
 
@@ -17,7 +16,6 @@ const fetchManga = async(mangaLink: string): Promise<FetchMangaResponse> => {
     genres: genres(detailsTable),
     updated_at: updatedAt(extraDetailsContainer),
     views: mangaViews(extraDetailsContainer),
-    source: source(mangaLink),
     chapters: chapters(document),
   }
 }
@@ -99,17 +97,6 @@ function mangaViews(extraDetailsContainer: HTMLDivElement | null): number | unde
   return rawNumber
     ? handleViewNumber(rawNumber)
     : undefined
-}
-
-function source(mangaLink: string): Source {
-  const matches = mangaLink.match(/http[s]{0,1}:\/\/([A-z]*)\..*/)
-  if(!matches) throw 'RegEx couldn\'t match for the given link...'
-  const domain = matches[1]
-
-  return ({
-    'chapmanganato': 'manganato',
-    'mangakakalot': 'mangakakalot',
-  } as Record<string, Source>)[domain]
 }
 
 function chapters(document: Document): Array<ChapterInfo> {
