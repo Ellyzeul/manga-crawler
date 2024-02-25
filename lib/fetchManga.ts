@@ -1,6 +1,6 @@
 import { MapSources } from "../types/MapSources"
 import manganatoFetchManga from "../src/manganato/fetchManga"
-import { FetchChaptersSignature } from "../types/FetchChapters"
+import { FetchMangaSignature } from "../types/FetchChapters"
 import { Source } from "../types/Source"
 
 export default async function fetchManga(mangaLink: string, source: Source) {
@@ -9,7 +9,7 @@ export default async function fetchManga(mangaLink: string, source: Source) {
   return await mapSources[source](mangaLink)
 }
 
-const mapSources: MapSources<FetchChaptersSignature> = {
+const mapSources: MapSources<FetchMangaSignature> = {
   'mangakakalot': manganatoFetchManga,
   'manganato': manganatoFetchManga,
 }

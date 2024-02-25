@@ -1,6 +1,7 @@
 export const CHAPTER_LIST_SELECTOR = 'ul.row-content-chapter'
 export const CHAPTER_SUMMARY_SELECTOR = 'div.panel-story-info-description'
 
+export const MANGA_TITLE_SELECTOR = 'div.story-info-right > h1'
 export const MANGA_DETAILS_TABLE_SELECTOR = 'table.variations-tableInfo'
 export const MANGA_ALTERNATIVE_TITLES_SELECTOR = 'tbody > tr:nth-child(1) > td.table-value > h2'
 export const MANGA_AUTHOR_SELECTOR = 'tbody > tr:nth-child(2) > td.table-value > a'

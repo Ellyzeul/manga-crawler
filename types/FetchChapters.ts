@@ -1,5 +1,8 @@
-export type FetchChaptersSignature = (mangaLink: string) => Promise<FetchChaptersResponse>
-export type FetchChaptersResponse = {
+import { Source } from "./Source"
+
+export type FetchMangaSignature = (mangaLink: string) => Promise<FetchMangaResponse>
+export type FetchMangaResponse = {
+  title: string,
   summary: string,
   alternative_titles: Array<string>,
   author?: string,
@@ -7,6 +10,7 @@ export type FetchChaptersResponse = {
   genres: Array<string>,
   updated_at?: string,
   views?: number,
+  source: Source
   chapters: Array<ChapterInfo>
 }
 export type ChapterInfo = {
