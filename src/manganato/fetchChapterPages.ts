@@ -1,6 +1,6 @@
 import axios from "axios"
 import { FetchChapterPagesResponse, FetchChapterPagesSignature } from "../../types/FetchChapterPages"
-import { fetchDocument } from "../utils"
+import { fetchDocument } from "../utils/fetchDocument"
 import { CHAPTER_PAGES_LIST } from "./constants"
 
 const fetchChapterPages: FetchChapterPagesSignature = async(chapterLink: string): Promise<FetchChapterPagesResponse> => {

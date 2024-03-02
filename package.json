@@ -1,9 +1,8 @@
 {
   "name": "manga-crawler",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A lib for programmatic access to manga on diverse sources.",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/Ellyzeul/manga-crawler.git"

@@ -1,5 +1,5 @@
 import { ChapterInfo, FetchMangaResponse } from "../../types/FetchManga"
-import { fetchDocument } from "../utils"
+import { fetchDocument } from "../utils/fetchDocument"
 import { CHAPTER_LIST_SELECTOR, CHAPTER_SUMMARY_SELECTOR, MANGA_ALTERNATIVE_TITLES_SELECTOR, MANGA_AUTHOR_SELECTOR, MANGA_DETAILS_TABLE_SELECTOR, MANGA_EXTRA_DETAILS_DIV_SELECTOR, MANGA_GENRES_SELECTOR, MANGA_STATUS_SELECTOR, MANGA_TITLE_SELECTOR, MANGA_UPDATED_AT_SELECTOR, MANGA_VIEWS_SELECTOR, NUMBER_UNIT } from "./constants"
 
 const fetchManga = async(mangaLink: string): Promise<FetchMangaResponse> => {
