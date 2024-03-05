@@ -17,6 +17,7 @@ Funcionalidade | Mangakakalot | Manganato
 [`search`](#search) | ✅ | ✅
 [`fetchManga`](#fetchManga) | ✅ | ✅
 [`fetchChapterPages`](#fetchchapterpages) | ✅ | ✅
+[`listMangas`](#listmangas) | ✅ | ❌
 
 ## Uso da biblioteca
 
@@ -91,4 +92,30 @@ Array<{
   encoded_page?: string,   // Imagem da página no formato: `data:image/jpeg;base64, ${encodedPage}`
   number: number,          // Número da página
 }>
+```
+---
+### `listMangas`
+
+`listMangas(source: string, opts: {})`
+
+- `source`: Nome da fonte de busca
+- `opts`: Condições de filtro e ordenação
+
+```javascript
+import MangaCrawler from "manga-crawler"
+
+const results = await MangaCrawler.listMangas('mangakakalot', { page: 1 })
+```
+Tipo retornado: 
+```typescript
+{
+  current_page: number,   // Página buscada
+  last_page: number,      // Última página
+  mangas: Array<{
+    name: string,           // Título do mangá
+    link: string,           // Link para a página do mangá
+    thumbnail: string,      // Link para a imagem da capa
+    source: string,         // Fonte a qual o mangá pertence, pois nem sempre é a mesma da fonte de pesquisa
+  }>,
+}
 ```
