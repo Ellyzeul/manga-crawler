@@ -1,6 +1,7 @@
-// fetchManga
-
 import { MangakakalotCategory } from "../../types/ListMangas"
+
+
+// fetchManga
 
 export const MANGA_DETAILS_LIST_SELECTOR = 'div.manga-info-top'
 export const MANGA_TITLE_SELECTOR = 'li:nth-child(1) > h1'
