@@ -23,6 +23,10 @@ export const CHAPTER_PAGES_LIST = 'div.container-chapter-reader > img'
 
 // listMangas
 
+export const LIST_MANGA_LAST_PAGE_SELECTOR = 'div.panel-page-number > div.group-page > a:nth-child(5)'
+export const LIST_MANGA_MANGAS_SELECTOR = 'div.panel-content-genres > div.content-genres-item'
+export const LIST_MANGA_TITLE_SELECTOR = 'div.genres-item-info > h3 > a.genres-item-name'
+export const LIST_MANGA_THUMBNAIL_SELECTOR = 'a.genres-item-img > img.img-loading'
 export const LIST_MANGA_CATEGORY_CODE_FOR: Record<ManganatoCategory, string> = {
   'all': 'all',
   'action': '2',

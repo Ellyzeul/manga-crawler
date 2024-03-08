@@ -17,7 +17,7 @@ Funcionalidade | Mangakakalot | Manganato
 [`search`](#search) | ✅ | ✅
 [`fetchManga`](#fetchManga) | ✅ | ✅
 [`fetchChapterPages`](#fetchchapterpages) | ✅ | ✅
-[`listMangas`](#listmangas) | ✅ | ❌
+[`listMangas`](#listmangas) | ✅ | ✅
 
 ## Uso da biblioteca
 

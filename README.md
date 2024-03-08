@@ -17,7 +17,7 @@ Feature | Mangakakalot | Manganato
 [`search`](#search) | ✅ | ✅
 [`fetchManga`](#fetchManga) | ✅ | ✅
 [`fetchChapterPages`](#fetchchapterpages) | ✅ | ✅
-[`listMangas`](#listmangas) | ✅ | ❌
+[`listMangas`](#listmangas) | ✅ | ✅
 
 ## Usage
 
